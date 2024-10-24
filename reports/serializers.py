@@ -27,3 +27,8 @@ class MobilePspAgentsInformationSerializer(serializers.ModelSerializer):
     class Meta:
         model = psp_agents_info
         fields = "__all__"
+
+class ReportsConfigurationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReportsConfiguration
+        fields = "__all__"

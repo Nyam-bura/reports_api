@@ -116,3 +116,18 @@ class psp_agents_info(models.Model):
     no_of_agent_cash_withd_banks = models.PositiveIntegerField()
     value_of_agent_cash_withd_banks = models.DecimalField(max_digits=12, decimal_places=2)
 
+
+class ReportsConfiguration(models.Model):
+    report_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50)
+    computational_frequency = models.CharField(max_length=50,   choices=COMPUTATIONAL_TIME_CHOICES + COMPUTATION_FREQUENCY_CHOICES)
+    submission_frequency = models.CharField(max_length=50,choices=SUBMISSION_FREQUENCY_CHOICES)
+    report = models.CharField(max_length=65)
+    
+    class Meta:
+        app_label = 'reports' 
+
+    def __str__(self):
+        return self.name 
+
+

@@ -24,5 +24,9 @@ class PspTrustAccountPlacementViewSet(viewsets.ModelViewSet):
 class MobilePspAgentsInformationViewSet(viewsets.ModelViewSet):
     queryset = psp_agents_info.objects.all()
     serializer_class = MobilePspAgentsInformationSerializer
+
+class ReportsConfigurationsViewSet(viewsets.ModelViewSet):
+    queryset = ReportsConfiguration.objects.all()
+    serializer_class = ReportsConfigurationSerializer
     
 

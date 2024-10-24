@@ -13,7 +13,7 @@ class Command(BaseCommand):
         faker = Faker()
         for _ in range(100):  # Adjust the range for the number of records you want to create
             psp_customer_info.objects.create(
-                reporting_date="14-Oct-2024",
+                reporting_date="22-Oct-2024",
                 psp_id=random.choice([choice[0] for choice in PSP_ID_OTHER_CHOICES]),
                 sub_county_code=random.choice([choice[0] for choice in SUB_COUNTY_CHOICES]),
                 gender=random.choice([choice[0] for choice in GENDER_CHOICES]),
@@ -32,7 +32,7 @@ class Command(BaseCommand):
         for _ in range(100):  # Adjust the range for the number of records you want to create
             psp_transac_categorization_info.objects.create(
                 psp_id=random.choice([choice[0] for choice in PSP_ID_OTHER_CHOICES]),
-                reporting_date="14-Oct-2024",
+                reporting_date="22-Oct-2024",
                 sub_transaction_code=random.choice([choice[0] for choice in SUB_TRANSACTION_CHOICES]),
                 band_code=random.choice([choice[0] for choice in BAND_CHOICES]),
                 volume_of_transactions=faker.random_int(min=1, max=10000),
@@ -45,7 +45,7 @@ class Command(BaseCommand):
         for _ in range(100):
             interoperability_data.objects.create(
                 psp_id=random.choice([choice[0] for choice in PSP_ID_OTHER_CHOICES]),
-                reporting_date="14-Oct-2024",
+                reporting_date="22-Oct-2024",
                 band_code=random.choice([choice[0] for choice in BAND_CHOICES]),
                 psp_id_other=random.choice([choice[0] for choice in PSP_ID_OTHER_CHOICES]),
                 interoperability_code=random.choice([choice[0] for choice in INTEROP_CHOICES]),
@@ -60,7 +60,7 @@ class Command(BaseCommand):
         for _ in range(100):
             trust_account_info.objects.create(
                 psp_id=random.choice([choice[0] for choice in PSP_ID_OTHER_CHOICES]),
-                reporting_date="14-Oct-2024",
+                reporting_date="22-Oct-2024",
                 trust_fund_placement=faker.word(),
                 trust_fund_inv_maturity_date=faker.date(pattern='%Y-%m-%d', end_datetime=None),
                 cat_trust_fund_invested_amt=faker.pydecimal(left_digits=10, right_digits=2, positive=True),
@@ -72,7 +72,7 @@ class Command(BaseCommand):
         for _ in range(100):
             psp_agents_info.objects.create(
                 psp_id=random.choice([choice[0] for choice in PSP_ID_OTHER_CHOICES]),
-                reporting_date="14-Oct-2024",
+                reporting_date="22-Oct-2024",
                 agent_type_code=random.choice([choice[0] for choice in AGENT_TYPE_CHOICES]),
                 agents_id=faker.lexify(text='??????????'),
                 gps_cordinates=faker.lexify(text='??????????'),
@@ -90,3 +90,14 @@ class Command(BaseCommand):
                 value_of_agent_cash_withd_banks=faker.pydecimal(left_digits=10, right_digits=2, positive=True),
             )
         self.stdout.write(self.style.SUCCESS('Successfully populated MobilePspAgentsInformation with fake data'))
+
+# populate ReportsConfiguration
+        for _ in range(100):
+            ReportsConfiguration.objects.create(
+                report_id=faker.word(),
+                name = faker.word(),
+                computational_frequency= random.choice([choice[0] for choice in COMPUTATIONAL_TIME_CHOICES]),
+                submission_frequency= random.choice([choice[0] for choice in SUBMISSION_FREQUENCY_CHOICES]),
+                report=faker.word(),
+            )
+        self.stdout.write(self.style.SUCCESS('Successfully populated PspTrustAccountPlacement with fake data'))

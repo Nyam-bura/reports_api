@@ -8,6 +8,7 @@ router.register(r'mobile-transac-categ', MobilePspTransactionCategorizationViewS
 router.register(r'mobile-psp-interoperability', MobilePspInteroperabilityViewSet )
 router.register(r'mobile-psp-trust-placement', PspTrustAccountPlacementViewSet )
 router.register(r'mobile-psp-agent-info', MobilePspAgentsInformationViewSet )
+router.register(r'reports-configuration', ReportsConfigurationsViewSet )
 
 urlpatterns = [
     path('', include(router.urls)),
